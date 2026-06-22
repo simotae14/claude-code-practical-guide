@@ -1,0 +1,15 @@
+{
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true
+  },
+  "effortLevel": "medium",
+  "theme": "dark-daltonized",
+  "permissions": {
+    "deny": [
+      "Bash(**/.env)",
+      "Read(**/.env)",
+      "Write(**/.env)"
+    ]
+  },
+  "alwaysThinkingEnabled": false
+}
