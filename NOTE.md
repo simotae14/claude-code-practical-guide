@@ -175,6 +175,30 @@ e posso scegliere da dove voglio revertare il codice, dove current indica lo sna
 ![rewind-command](./notes-imgs/rewind-command.png)
 e ti permette sempre di selezionare a che punto tornare
 
+# Using Claude Code
+## Intro
+Vediamo ora l'uso vero e proprio di Claude Code
+![use-claude-code](./notes-imgs/use-claude-code.png)
+Come usare il Prompt & Context Engineering
+Vedremo il Plan Mode
+la gestione della memoria e CLAUDE.md
+Usare subagents custom
+E lavorare con le Agent Skills
+
+## Making Sense of Prompt & Context Engineering
+![prompt-eng](./notes-imgs/prompt-eng.png)
+un miglior input da migliori risultati
+
+e un buon input è dato da 
+- istruzioni specifiche
+![specific-instruction](./notes-imgs/specific-instruction.png)
+- un contesto rilevante
+![relevant-context](./notes-imgs/relevant-context.png)
+
+## Prompt Engineerging in Action & Working with Specs
+Creaimo un app per prendere note usando un Rich Text Editor
+
+
 
 ## SPEC.MD:
 
