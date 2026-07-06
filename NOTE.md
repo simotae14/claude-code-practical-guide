@@ -1,0 +1,217 @@
+# Claude Code Setup Overview
+
+Doc ➔ <https://code.claude.com/docs/en/overview>
+
+commit **[00 initial commit](https://github.com/simotae14/claude-code-practical-guide/commit/d9ca7542661fa566e0862492ab3146b4e068fa10 "00 initial commit")**
+
+## Starting Project:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/starting-project.zip>
+
+## Base usage & Official VS Code Integration Documentation:
+
+<https://code.claude.com/docs/en/vs-code>
+
+commit **[01 Claude Base Usage](https://github.com/simotae14/claude-code-practical-guide/commit/0f91db8320dc85168068f8b0b6cb8649640d3631 "01 Claude Base Usage")**
+
+commit **[02 Claude project config](https://github.com/simotae14/claude-code-practical-guide/commit/0d5e1cca8d659e944743958b756e0042f967df35 "02 Claude project config")**
+
+commit **[03 Claude add project settings](https://github.com/simotae14/claude-code-practical-guide/commit/8546a4238be9db7468018dd621c555400350f531 "03 Claude add project settings")**
+
+## Understanding Sessions & Context:
+
+Per vedere quanto contesto è stato usato durante la sessione
+
+```
+/context
+```
+
+e ti mostrerà una cosa del genere
+
+![Context](./notes-imgs/context.png)
+
+Altro comando è
+
+```
+/usage
+```
+
+che ti mostra l'uso rimanente che hai per il tuo piano claude
+![Usage](./notes-imgs/usage.png)
+
+## Core Features
+
+puoi invocare claude passandogli pure il prompt iniziale
+
+es:
+
+```
+$ claude "explain this project"
+```
+
+ed otterrai
+![PromptIniziale](./notes-imgs/prompt-iniziale.png)
+
+oppure puoi anche avviare Claude in background usando il **-p** flag, esegue ragionamento in background e appare solo quando ha la risposta
+
+```
+$ claude -p "explain this project"
+```
+
+ed otterrai
+![PFlag](./notes-imgs/pFlag.png)
+
+come si vede non c'è ragionamento, solo la risposta e poi in automatico chiude claude
+
+<br />
+
+per ripristinare una versione precedente puoi usare comando **resume**
+
+```
+/resume
+```
+
+e poi navigare le varie sessioni e ripristinarle
+![Resume](./notes-imgs/resume.png)
+
+per avviare Claude con ultima sessione puoi usare il flag **-c**
+
+```Shell
+$ claude -c
+```
+
+ed otterrai
+![CFlag](./notes-imgs/cFlag.png)
+
+## Available Settings:
+
+<https://code.claude.com/docs/en/settings#available-settings>
+
+## Starting Project:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/starting-project.zip>
+
+## Advanced Permissions Management
+
+Quando Claude deve fare qualcosa per cui non è sicuro di avere i permessi ti mostra un prompt di scelta
+
+![advPermissions](./notes-imgs/advPermissions.png)
+
+per garantire in modo permanente il permesso basta usare la combinazione di tasti Shift + Tab
+
+oppure se voglio a prescindere cambiare il permesso di default basta cliccare Shift + Tab e dovrebbe permetterti di navigare i vari permessi
+
+![permShift](./notes-imgs/permShift.png)
+
+ad esempio col permesso settato sopra genererà la lista dei vantaggi senza chiederti alcun permesso
+
+anche in sta modalità cmq non è permesso fare tutto ma solo editare il codice
+
+esempio se gli chiedo di creare il comando di git commit
+
+![commit](./notes-imgs/commit.png)
+![PCommit](./notes-imgs/pCommit.png)
+
+se invece volessimo avviare claude senza che chieda permessi per nulla bisogna usare il flag **--dangerously-skip-permissions**
+
+```Shell
+$ claude --dangerously-skip-permissions
+```
+
+devi usarlo con molta parsimonia
+
+![danger](./notes-imgs/danger.png)
+
+e se accetti avvia claude in sta modalità
+
+## Running Claude Code via Docker Sandboxes
+Per evitare di eseguire Claude con tutti i permessi e dargli possibilità di cancellare la memoria fisica possiamo creare una sandbox protetta di docker dove dare accesso solo ad un numero limitato di risorse scelte da noi a Claude.
+
+```Shell
+$ docker sandbox run claude
+```
+deprecato ora usare
+```Shell
+$ docker sbx run claude
+```
+entrambi non vanno con la versione recente di docker, cmq devi anche nel caso rifare login a claude dato che stai usandolo in un altro environment
+
+![dockerSandbox](./notes-imgs/docker-sandbox.png)
+![dockerSandboxResult](./notes-imgs/docker-sandbox-result.png)
+
+## Using Claude Code's Native Sandboxing
+invece di usare docker puoi usare direttamente la sandbox nativa di claude code
+
+semplicemente col comando
+```
+/sandbox
+```
+ti chiede che modalità di sandbox vuoi usare
+![sandbox](./notes-imgs/sandbox.png)
+In windows non funziona, solo con macOs, Linux e WSL2 è supportato
+
+Usiamo auto allow perchè l'idea stessa della sandbox è di creare un ambiente protetto dove poter fare tutto
+Controlla anche accesso alla rete.
+
+Una volta selezionato sandbox in automatico aggiorna anche i settings locali del progetto
+![sandbox-settings](./notes-imgs/sandbox-settings.png)
+
+una volta fatto questo ogni volta che riapri una sessione claude in questo progetto sarà aperta in sandbox mode
+![sandbox-run](./notes-imgs/sandbox-run.png)
+come vedi anche se eseguo in dangerous mode non ha accesso a tutto mio hard drive
+![sandbox-alert](./notes-imgs/sandbox-alert.png)
+
+## Undoing Actions & The importance of version control systems
+Permette di revertare alcune modifiche o annullarle
+due modi
+- premi due volte Escape (ESC) e ti mostrerà messaggio Rewind
+![rewind](./notes-imgs/rewind.png)
+e posso scegliere da dove voglio revertare il codice, dove current indica lo snapshot corrente ma possiamo andare addirittura all'inizio della conversazione
+![restore](./notes-imgs/restore.png)
+- usare il comando /rewind
+```
+/rewind
+```
+![rewind-command](./notes-imgs/rewind-command.png)
+e ti permette sempre di selezionare a che punto tornare
+
+
+## SPEC.MD:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/finished-project/SPEC.MD>
+
+## Context7 MCP:
+
+<https://github.com/upstash/context7>
+
+## Available Tools:
+
+<https://code.claude.com/docs/en/settings#tools-available-to-claude>
+
+## DocsExplorer Agent:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/other/subagent/DocsExplorer.md>
+
+## Skills Metadata:
+
+<https://code.claude.com/docs/en/skills#frontmatter-reference>
+
+## Skills Package:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/other/skills.zip>
+
+## Code Review Command:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/other/commands/code-review.md>
+
+## Hook Events:
+
+<https://code.claude.com/docs/en/hooks#hook-events>
+
+## Creating Custom Plugins:
+
+<https://code.claude.com/docs/en/plugins>
+
+## Ralph Loop Project:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/ralph-loop.zip>
