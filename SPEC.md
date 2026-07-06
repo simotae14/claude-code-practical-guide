@@ -47,7 +47,7 @@ Authenticated users can:
 - A user can **share a note publicly**, generating a unique public URL for that note
 - A user can **stop sharing** a note, revoking public access
 - Publicly shared notes are **read-only** for unauthenticated visitors
-- The public URL format should be: `/notes/public/[shareId]`
+- The public URL format: `/notes/public/[shareId]`
 
 ### 4.3 Rich Text Formatting
 
@@ -77,27 +77,72 @@ CREATE TABLE notes (
   id          TEXT PRIMARY KEY,
   user_id     TEXT NOT NULL,
   title       TEXT NOT NULL,
-  content     TEXT NOT NULL,         -- TipTap JSON stored as serialized JSON string
-  is_public   INTEGER NOT NULL DEFAULT 0,  -- 0 = private, 1 = public
-  share_id    TEXT UNIQUE,           -- unique token used for public URL, null if not shared
+  content     TEXT NOT NULL,              -- TipTap JSON stored as serialized JSON string
+  is_public   INTEGER NOT NULL DEFAULT 0, -- 0 = private, 1 = public
+  share_id    TEXT UNIQUE,                -- unique token for public URL, null if not shared
   created_at  TEXT NOT NULL,
   updated_at  TEXT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 ```
 
-### 5.2 Users Table
+### 5.2 Auth Tables (managed by better-auth)
 
-Managed by **better-auth** — schema generated automatically by the library. Includes at minimum:
+The following tables are created and managed automatically by **better-auth**. Do not create them manually — use the better-auth CLI (`npx auth@latest migrate`) or generate the schema with `npx auth@latest generate`.
 
-- `id` (TEXT, primary key)
-- `email` (TEXT, unique)
-- `password` (TEXT, hashed)
-- `created_at` (TEXT)
+#### `user`
 
-### 5.3 Sessions Table
+| Column | Type | Notes |
+|---|---|---|
+| `id` | TEXT | Primary key |
+| `name` | TEXT | Display name |
+| `email` | TEXT | Unique |
+| `emailVerified` | BOOLEAN | |
+| `image` | TEXT | Optional, profile image URL |
+| `createdAt` | DATE | |
+| `updatedAt` | DATE | |
 
-Managed by **better-auth** — schema generated automatically.
+#### `session`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | TEXT | Primary key |
+| `userId` | TEXT | Foreign key → `user.id` (cascade delete) |
+| `token` | TEXT | Unique session token |
+| `expiresAt` | DATE | |
+| `ipAddress` | TEXT | Optional |
+| `userAgent` | TEXT | Optional |
+| `createdAt` | DATE | |
+| `updatedAt` | DATE | |
+
+#### `account`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | TEXT | Primary key |
+| `userId` | TEXT | Foreign key → `user.id` (cascade delete) |
+| `accountId` | TEXT | Provider account ID, or `userId` for credential accounts |
+| `providerId` | TEXT | e.g. `"credential"` for email/password |
+| `accessToken` | TEXT | Optional |
+| `refreshToken` | TEXT | Optional |
+| `accessTokenExpiresAt` | DATE | Optional |
+| `refreshTokenExpiresAt` | DATE | Optional |
+| `scope` | TEXT | Optional |
+| `idToken` | TEXT | Optional |
+| `password` | TEXT | Optional, hashed — used for email/password auth |
+| `createdAt` | DATE | |
+| `updatedAt` | DATE | |
+
+#### `verification`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | TEXT | Primary key |
+| `identifier` | TEXT | The verification target (e.g. email) |
+| `value` | TEXT | The value to verify |
+| `expiresAt` | DATE | |
+| `createdAt` | DATE | |
+| `updatedAt` | DATE | |
 
 ---
 
@@ -124,8 +169,8 @@ Managed by **better-auth** — schema generated automatically.
 | GET | `/api/notes/[id]` | Yes | Fetch a single note by ID |
 | PUT | `/api/notes/[id]` | Yes | Update a note's title and/or content |
 | DELETE | `/api/notes/[id]` | Yes | Delete a note |
-| POST | `/api/notes/[id]/share` | Yes | Enable public sharing, generate share_id |
-| DELETE | `/api/notes/[id]/share` | Yes | Disable public sharing, clear share_id |
+| POST | `/api/notes/[id]/share` | Yes | Enable public sharing, generate `share_id` |
+| DELETE | `/api/notes/[id]/share` | Yes | Disable public sharing, clear `share_id` |
 | GET | `/api/notes/public/[shareId]` | No | Fetch a publicly shared note |
 
 ---

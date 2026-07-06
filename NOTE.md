@@ -204,11 +204,37 @@ es:
 ![specifications](./notes-imgs/specifications.png)
 e col mio input ho chiesto a ChatGpt di crearmi un doc con le specifiche
 ho salvato il contenuto delle specifiche e l ho salvato dentro a un file SPEC.md nella root del progetto
+qui il risultato del file SPEC.md
+<https://github.com/simotae14/claude-code-practical-guide/commit/cb72de4a80a272f0ecee8724e5d871a0d140d279>
+ora in una nuova sessione di Claude code posso digitare un prompt in cui referenzio il file SPEC per dare contesto
+Dobbiamo solo includere i file rilevanti per il Context
 
+per andare a capo usare \ + Invio in claude
+Inoltre per utenti e autenticazione vogliamo usar ela Better Auth library
+che necessita di user in una determinata shape <https://better-auth.com/docs/concepts/database#user>
+Copio la documentazione in Markdown
+e la wrappo in dei tag xml che sono molto utili per fare comprendere
+```
+We're building an app described in @SPEC.md .
+Please format this file as proper markdown.
+  
+Also update the file and update the part about the "users" table and auth-related tables.
+We're using the better-auth library which expects a certain database structure.
+  
+Here's the official better-auth database documentation article:
+<better-auth-database-docs>
+[Pasted text #1 +1026 lines]
+</better-auth-database-docs>
+```
+![prompt-and-context](./notes-imgs/prompt-and-context.png)
+Dato che non voglio che mi chieda permessi posso schiacciare Shift+Tab per entrare in accept edits mood
+![shift-tab](./notes-imgs/shift-tab.png)
 
 ## SPEC.MD:
-
 <https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/finished-project/SPEC.MD>
+
+come risultato finale mi aspetto un markdown formattato correttamente e con tutte le info, controllare per bene output
+
 
 ## Context7 MCP:
 
