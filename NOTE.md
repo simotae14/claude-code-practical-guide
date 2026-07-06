@@ -198,6 +198,12 @@ e un buon input è dato da
 ## Prompt Engineerging in Action & Working with Specs
 Creaimo un app per prendere note usando un Rich Text Editor
 
+iniziamo col prompt
+di solito il documento con le specifiche lui lo elabora tramite AI
+es:
+![specifications](./notes-imgs/specifications.png)
+e col mio input ho chiesto a ChatGpt di crearmi un doc con le specifiche
+ho salvato il contenuto delle specifiche e l ho salvato dentro a un file SPEC.md nella root del progetto
 
 
 ## SPEC.MD:
