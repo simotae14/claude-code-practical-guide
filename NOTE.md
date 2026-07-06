@@ -234,7 +234,27 @@ Dato che non voglio che mi chieda permessi posso schiacciare Shift+Tab per entra
 <https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/finished-project/SPEC.MD>
 
 come risultato finale mi aspetto un markdown formattato correttamente e con tutte le info, controllare per bene output
+[Commit: generazione e review dello SPEC markdown file](https://github.com/simotae14/claude-code-practical-guide/commit/d3229be44b81f2edab22583c55a3cfd258579ee5)
 
+## Inizializzare un Progetto Claude
+Cominciamo ad installare delle dipendenze per cui non mi serve aiuto di Claude ovvero
+```
+bun add better-auth zod @tiptap/react @tiptap/pm @tiptap/starter-kit
+```
+lo facciamo noi perchè spesso se Claude cerca di installare dipendenze modifica il package.json file aggiungendo versioni vecchie.
+
+Inoltre installo un package che mi serve solo come dev dependency
+```
+bun add -D @types/bun
+```
+
+Apro una nuova sessione Claude code e ogni volta che apro un nuovo lavoro con claude code su un progetto, che sia nuovo o un repo già esistente
+runno il comando /init
+```
+/init
+```
+che analizza il codebase e genera una sintesi dell'analisi su un file CLAUDE.md
+![claude-init](./notes-imgs/claude-init.png)
 
 ## Context7 MCP:
 
