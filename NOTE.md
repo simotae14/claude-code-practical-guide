@@ -39,6 +39,11 @@ Altro comando è
 che ti mostra l'uso rimanente che hai per il tuo piano claude
 ![Usage](./notes-imgs/usage.png)
 
+Per compattare manualmente una conversazione puoi usare il comando /compact
+```
+/compact
+```
+
 ## Core Features
 
 puoi invocare claude passandogli pure il prompt iniziale
@@ -270,7 +275,28 @@ Poi chiedo di dare risposte estremamente concise e evitare lunghi snippet di cod
 
 Posso poi aggiungere diversi Claude.md file in diverse subfolders, caricati solo quando Claude lavora sui files dentro quelle directories.
 
-[Commit: customizzare il CLAUDE.md file]()
+[Commit: customizzare il CLAUDE.md file](https://github.com/simotae14/claude-code-practical-guide/commit/6836ba575e18e7da982828ad143425d8dc515d7d)
+
+## Cominciamo il Plan Mode
+Creiamo una nuova sessione con questo prompt
+```
+Let's start building the application described in @SPEC.MD .
+
+Start by setting up the whole structure. Only add a dummy message to each page. No actual page content yet.
+
+Just create all those different page.tsx files for different application routes. Don't implement authentication yet.
+```
+
+![Plan mode](./notes-imgs/plan-mode.png)
+e con shift Tab switchare al Plan mode
+modalità in cui raccoglie info e ti chiede chiarimenti se necessari
+
+Esplora prima il codice e poi crea un piano da seguire.
+Alla fine da una serie di opzioni se accettare il piano e eseguirlo, se approvare manualmente le varie modifiche
+![Accept plan mode](./notes-imgs/accept-plan.png)
+nella terza opzione posso anche dare più informazioni a Claude
+![Change plan](./notes-imgs/change-plan.png)
+e poi una volta fatto seleziono "Yes, auto-accept edits"
 
 ## Context7 MCP:
 
