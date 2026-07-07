@@ -255,6 +255,22 @@ runno il comando /init
 ```
 che analizza il codebase e genera una sintesi dell'analisi su un file CLAUDE.md
 ![claude-init](./notes-imgs/claude-init.png)
+[Commit: init progetto e generazione CLAUDE.md file](https://github.com/simotae14/claude-code-practical-guide/commit/a092f86d27442511209b137a6fb2b7ce0b4e60f9)
+
+## Crafting great CLAUDE.md files
+Ogni repo deve avere almeno un Claude file alla root del progetto.
+E viene caricato ad ogni sessione Claude Code sul repo.
+Quindi non deve essere troppo lungo.
+
+Andiamo ad aggiungere alcune cose custom all'inizio del Claude file specificando quando vogliamo che il file venga letto (ad esempio solo nel caso di task con scelte architetturali).
+Poi chiedo di dare risposte estremamente concise e evitare lunghi snippet di codice dato che vanno ad influire sul contesto.
+![claude-md-spec](./notes-imgs/claude-md-spec.png)
+![claude-md-when](./notes-imgs/claude-md-when.png)
+![claude-md-concise](./notes-imgs/claude-md-concise.png)
+
+Posso poi aggiungere diversi Claude.md file in diverse subfolders, caricati solo quando Claude lavora sui files dentro quelle directories.
+
+[Commit: customizzare il CLAUDE.md file]()
 
 ## Context7 MCP:
 
