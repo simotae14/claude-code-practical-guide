@@ -298,9 +298,86 @@ nella terza opzione posso anche dare più informazioni a Claude
 ![Change plan](./notes-imgs/change-plan.png)
 e poi una volta fatto seleziono "Yes, auto-accept edits"
 
+[Commit: Accettare e lasciare implementare il Piano](https://github.com/simotae14/claude-code-practical-guide/commit/8511ad1bbcad0e67dd169d010acf7b225386da66)
+
+## Uso dei Tools Built-in di Claude Code
+Creo una nuova sessione e chiedo a Claude Code di implementare autenticazione e db access
+
+```
+Implement authentication and database access.
+
+Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
+```
+può riuscire a farlo perchè sono cose descritte nello SPEC file che è referenziato nel CLAUDE file.
+
+volendo posso esplicitarlo cmq
+```
+Implement authentication and database access as described in @SPEC.md .
+
+Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
+```
+ma dato che usiamo Bun e Better-Auth e non lo stiamo esplicitando potremmo ottenere qualcosa di sbagliato da questo prompt.
+quindi vale la pena aggiungere i riferimenti alla documentazione di questi tools
+
+```
+Implement authentication and database access as described in @SPEC.md .
+
+Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
+
+Visit the official docs websites:
+- https://bun.com/docs/runtime/sqlite
+```
+oppure scrivere esplicitamente di cercare la doc lui nel web
+
+```
+Implement authentication and database access as described in @SPEC.md .
+
+Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
+
+Use web search to find the relevant documentation for Bun SQLite and better-auth setup (with next.js and Bun SQLite).
+```
+![Implement Auth](./notes-imgs/implement-auth.png)
+
+## Using MCP Servers and More on Permissions
+[Link Documentazione](https://modelcontextprotocol.io/docs/getting-started/intro)
+
 ## Context7 MCP:
 
-<https://github.com/upstash/context7>
+Un MCP server molto utile è Context7 [link repo](https://github.com/upstash/context7)
+In grado di aggiungere al context la documentazione necessaria per usare determinati tools.
+
+Nella pagina github ci sono pure le istruzioni per l'installazione
+
+questa è installazione locale al progetto
+```
+claude mcp add context7 -- npx -y @upstash/context7-mcp
+```
+e dopo averlo aggiunto
+
+![MCP Context 7](./notes-imgs/context-7.png)
+
+se invece lo voglio globale
+```
+claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp
+```
+
+Ora posso riprovare prompt precedente aggiungendo anche mcp context7
+
+```
+Implement authentication and database access as described in @SPEC.md .
+
+Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
+
+Use web search or context7 mcp to find the relevant documentation for Bun SQLite and better-auth setup (with next.js and Bun SQLite).
+```
+e lo lancio in plan mode
+
+dato che è la prima volta che uso context7 mi chiederà permesso
+
+! Context 7 Permesso](./notes-imgs/context7-permission.png)
+
+Accetto il suo piano e glielo faccio eseguire
+
 
 ## Available Tools:
 
