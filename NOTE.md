@@ -374,7 +374,7 @@ e lo lancio in plan mode
 
 dato che è la prima volta che uso context7 mi chiederà permesso
 
-! Context 7 Permesso](./notes-imgs/context7-permission.png)
+![Context 7 Permesso](./notes-imgs/context7-permission.png)
 
 Accetto il suo piano e glielo faccio eseguire
 
@@ -399,6 +399,10 @@ Quindi vale la pena creare un custom Documentation Explorer Subagent
 
 per farlo nella cartella <strong>.claude</strong> vado a inserire una cartella <strong>agents</strong> e dentro ci metto il nostro file <em>DocsExplorer.md</em>
 
+## DocsExplorer Agent:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/other/subagent/DocsExplorer.md>
+
 Inoltre qui un link a tutti i tool disponibili in Claude
 ## Available Tools:
 
@@ -416,11 +420,22 @@ Use web search or context7 mcp to look up docs.
 ```
 dovrebbe usare il nostro sub agent
 
-[Commit: creazione subagent custom DocsExplorer]()
+[Commit: creazione subagent custom DocsExplorer](https://github.com/simotae14/claude-code-practical-guide/commit/b58961d5135401097af918d8106b5e73e06443cd)
 
-## DocsExplorer Agent:
+## Encouraging Agent Usage
+Per forzare uso del nuovo Agent basta esplicitarlo nel Claude.md file
+Aggiungo
+```
+Whenever working with any third-party library or something similar, you MUST look up the official documentation to ensure that you're working with up-to-date information. Use the DocsExplorer subagent for efficient documentation lookup.
+```
+riprovo nuovamente a lanciare il prompt precedente
+vedo uso del subagent
+![Uso ExploreDoc Subagent](./notes-imgs/subagent-ex.png)
 
-<https://github.com/academind/claude-code-course-resources/blob/main/other/subagent/DocsExplorer.md>
+e mi ha trovato del codice che manca in base alla documentazione di better-auth
+![Codice mancante](./notes-imgs/missing-code.png)
+
+[Commit: aggiunta di next cookies da better auth]()
 
 ## Skills Metadata:
 
