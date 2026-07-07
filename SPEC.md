@@ -151,8 +151,7 @@ The following tables are created and managed automatically by **better-auth**. D
 | Route | Auth Required | Description |
 |---|---|---|
 | `/` | No | Landing / home page |
-| `/sign-in` | No | Sign in form |
-| `/sign-up` | No | Registration form |
+| `/authenticate` | No | Combined sign in / sign up form |
 | `/notes` | Yes | List of all user's notes |
 | `/notes/new` | Yes | Create a new note |
 | `/notes/[id]` | Yes | View and edit a specific note |

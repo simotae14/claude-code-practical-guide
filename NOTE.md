@@ -378,10 +378,45 @@ dato che è la prima volta che uso context7 mi chiederà permesso
 
 Accetto il suo piano e glielo faccio eseguire
 
+[Commit Use Context7 MCP to implement autj and db access](https://github.com/simotae14/claude-code-practical-guide/commit/25691b00089d1bf10b4b50e65f6a997aaa6cbabd)
 
+## Understanding Subagents
+Mettiamo di voler usare Claude Code per valutare l'implementazione precedente.
+```
+We're building @SPEC.MD .
+
+Please evaluate existing codebase to check whether authentication and database access are implemented correctly (in line with the expectations explained in SPEC.MD and the official documentation for the libraries / technologies used).
+
+Use web search or context7 mcp to look up docs.
+```
+non lanciarlo ne in edit che in plan mode
+mentre lo fa usa dei subagents, come l'explore in background
+ogni puntino indica attività nel main agent ed invece quello che vediamo indentato è nel subagent
+
+## Creating and Using a Custom Subagent
+La lettura della documentazione con context7 avviene direttamente nel main context e quindi si mangia token
+Quindi vale la pena creare un custom Documentation Explorer Subagent
+
+per farlo nella cartella <strong>.claude</strong> vado a inserire una cartella <strong>agents</strong> e dentro ci metto il nostro file <em>DocsExplorer.md</em>
+
+Inoltre qui un link a tutti i tool disponibili in Claude
 ## Available Tools:
 
 <https://code.claude.com/docs/en/settings#tools-available-to-claude>
+
+al momento l'agent che abbiamo creato è locale al progetto ma possiamo anche metterlo come globale nel nostro pc aggiungendolo nella cartella <strong>.claude</strong> principale dove ci sarà lo stesso corrispettivo.
+
+Riprovo ora in una nuova sessione Claude a lanciare sto prompt
+```
+We're building @SPEC.MD .
+
+Please evaluate existing codebase to check whether authentication and database access are implemented correctly (in line with the expectations explained in SPEC.MD and the official documentation for the libraries / technologies used).
+
+Use web search or context7 mcp to look up docs.
+```
+dovrebbe usare il nostro sub agent
+
+[Commit: creazione subagent custom DocsExplorer]()
 
 ## DocsExplorer Agent:
 
