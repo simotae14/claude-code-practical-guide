@@ -481,7 +481,10 @@ che usa la nostra nuova skill
 [Commit: definizione Custom Skill e implementazione autenticazione](https://github.com/simotae14/claude-code-practical-guide/commit/371d723f64c24c735dcc54c929b10ddf02111fdb)
 
 Bun Skill
-[Commit: Aggiunta Bun Skill]()
+[Commit: Aggiunta Bun Skill](https://github.com/simotae14/claude-code-practical-guide/commit/8599e99fd7357afa77621c566a4d6d7b0130c0bd)
+
+Clean Typescript Skill
+[Commit: Write Clean Typescript Skill]()
 
 ## Skills Metadata:
 
