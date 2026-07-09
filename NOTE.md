@@ -452,6 +452,8 @@ Dentro questa cartella devi creare una cartella per ogni skill
 ad es creo cartella <em>modern-best-practice-react-components</em> e poi dentro ogni cartella bisogna creare un file <em>SKILL.md</em> e dobbiamo usare sto nome.
 Dentro vado ad aggiungere alcuni metadati, e quelli required sono name e description, dove il nome deve prendere il nome della folder della skill
 [Doc metadata fields disponibili](https://code.claude.com/docs/en/plugins-reference#metadata-fields)
+## Skills Metadata:
+<https://code.claude.com/docs/en/skills#frontmatter-reference>
 Tra i metadata puoi scegliere di permettergli di accedere a un numero limitato di tools usando <em>allowed-tools</em>, oppure <em>context</em> se vogliamo fargli accedere al context
 Dentro la skill puoi mettere riferimenti ad altri documenti md che vanno ad approfondire determinate tematiche, come la ref che mettiamo agli useEffect
 
@@ -480,6 +482,10 @@ Did you implement the component using React best practices and clean, modern HTM
 che usa la nostra nuova skill
 [Commit: definizione Custom Skill e implementazione autenticazione](https://github.com/simotae14/claude-code-practical-guide/commit/371d723f64c24c735dcc54c929b10ddf02111fdb)
 
+## Skills Package:
+
+<https://github.com/academind/claude-code-course-resources/blob/main/other/skills.zip>
+
 Bun Skill
 [Commit: Aggiunta Bun Skill](https://github.com/simotae14/claude-code-practical-guide/commit/8599e99fd7357afa77621c566a4d6d7b0130c0bd)
 
@@ -499,15 +505,34 @@ Tailwind CSS Best Practices Skill
 [Commit: Tailwind CSS Best Practices Skill](https://github.com/simotae14/claude-code-practical-guide/commit/d661491a3ef49c7d035633cfcae6f461761e49b4)
 
 Web Security Skill
-[Commit: Web Security Skill]()
+[Commit: Web Security Skill](https://github.com/simotae14/claude-code-practical-guide/commit/e4b8695faa6a489be108cdf4a64d00a803d1499e)
 
-## Skills Metadata:
+## Using Agent Skills as Commands
+Dopo aver definito tutte le varie custom skills avrò anche altrettanti / commands
+![Elenco delle nuove skill come comandi](/notes-imgs/list-skill-as-commands.png)
+Ti permettono di avere in claude delle extra funzionalità.
 
-<https://code.claude.com/docs/en/skills#frontmatter-reference>
+Sono comandi che però definiscono best practices ma non fanno nulla quindi se li lanci otterrai questo
+![Lancio da linea di comando di una delle nostre skill](/notes-imgs/launch-skill-cmd.png)
 
-## Skills Package:
+## Iterating on the Demo app
+aggiungiamo il redirect post login e signup alla dashboard non permettendo accesso se non loggati
 
-<https://github.com/academind/claude-code-course-resources/blob/main/other/skills.zip>
+```
+We added authentication (see @app\(auth)\authenticate\page.tsx, @lib\auth-client.ts, @lib\auth.ts).
+
+As a next step, add the following features:
+- after successful authentication, redirect the user to "/notes"
+- protect "/notes" and all other note-related routes (except the publicly shared notes route) from unauthenticated access => add protection on a per-route level (NOT via layout)
+
+Use modern Next.js features and focus on writing clean, effiecient React / Next.js code.
+```
+e lo lancio in plan mode
+![Prompt per aggiungere redirect e protezione di alcune pagine](/notes-imgs/add-redirect-and-auth.png)
+Accetto piano e lo faccio implementare
+
+[Commit: aggiungi redirect post login e proteggiamo rotte non autenticate]()
+
 
 ## Code Review Command:
 
