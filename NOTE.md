@@ -490,10 +490,10 @@ Clean HTML and JSX Code Skill
 [Commit: Clean HTML and JSX Code Skill](https://github.com/simotae14/claude-code-practical-guide/commit/751a74dc8335288654717472ed45df1532a3847d)
 
 NextJS Best Practices Skill
-[Commit: NextJS Best Practices Skill]()
+[Commit: NextJS Best Practices Skill](https://github.com/simotae14/claude-code-practical-guide/commit/385e22e0ddd6535fde52278d7f8fce81dccbfbc5)
 
-NextJS Best Practices Skill
-[Commit: NextJS Best Practices Skill]()
+Using Modern Browser APIs Skill
+[Commit: Using Modern Browser APIs Skill]()
 
 NextJS Best Practices Skill
 [Commit: NextJS Best Practices Skill]()
