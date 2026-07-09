@@ -456,7 +456,29 @@ Tra i metadata puoi scegliere di permettergli di accedere a un numero limitato d
 Dentro la skill puoi mettere riferimenti ad altri documenti md che vanno ad approfondire determinate tematiche, come la ref che mettiamo agli useEffect
 
 Ovviamente puoi avere delle Skills globali dentro la cartella .claude generale. Per poterli condividere fra i vari progetti.
+[Commit: Create Custom Skill](https://github.com/simotae14/claude-code-practical-guide/commit/178b7e83cedb4a225e3bcd2d23d45a94b02b382b)
 
+Ora se vado direttamente in claude con questo prompt
+```
+Let's add a proper authentication route / page content to this app. We only support email + password auth.
+Users can switch between models, implemented via search params.
+
+No password resetting for this demo app
+```
+![Definizione del prompt](/notes-imgs/skill-usage-prompt.png)
+Una volta elaborato il piano gli diciamo che non vogliamo collezionare il nome utente
+![Richiedere cambiamenti al piano](/notes-imgs/plan-auth-req-changes.png)
+
+![Skill usage in claude](/notes-imgs/skill-usage-prompt.png)
+e lo eseguo in plan mode
+
+Una volta finito gli chiedo se ha fatto tutto per bene
+![Conferma lavoro eseguito correttamente](/notes-imgs/msg-finale-conferma.png)
+```
+Did you implement the component using React best practices and clean, modern HTML / JSX + Tailwind?
+```
+che usa la nostra nuova skill
+ 
 
 ## Skills Metadata:
 
