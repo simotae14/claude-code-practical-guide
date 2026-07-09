@@ -552,11 +552,33 @@ Also add a logout button to the header (when the user is authenticated)
 ```
 Approvo ed eseguo piano
 
-[Commit: creazione nota e mostrarla in dashboard]()
+[Commit: creazione nota e mostrarla in dashboard](https://github.com/simotae14/claude-code-practical-guide/commit/2a716f1d071eb330eda95a30bedb1a218b810045)
+
+## Building & Using Custom Commands (Prompt Templates)
+Andiamo a cercare di fare una review profonda del codice generato focalizzandoci su sicurezza e bugs.
+
+```
+Perform an in-depth code review of our codebase - focus on security and logical bugs.
+```
+il problema è che vorremmo fare + di una review quindi probabilmente dovremo ripetere spesso sto prompt (o uno più elaborato)
+Qui entrano in gioco i <strong>Custom commands</strong> che puoi aggiungere dentro la cartella <em>.claude</em> del progetto o globale e dentro crei una cartella <em>commands</em>.
+E dentro ad esempio creo il mio comando <em>code-review.md</em>
+
+![Creazione di comandi in claude](/notes-imgs/claude-commands.png)
+Alla fine un custom command non è altro che un prompt
+
+I metadati che scrivi sono totalmente opzionali
+![Esempio metadati code review](/notes-imgs/code-review-metadata.png)
+Ad esempio per la code review ci serve solo il tool di read
+
+e poi c'è la parte di prompt che prende anche argomenti
+![Esempio argomenti comando code review](/notes-imgs/code-review-argomenti.png)
 
 ## Code Review Command:
 
 <https://github.com/academind/claude-code-course-resources/blob/main/other/commands/code-review.md>
+
+[Commit: definizione comando Code Review]()
 
 ## Hook Events:
 
