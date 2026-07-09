@@ -575,10 +575,24 @@ e poi c'è la parte di prompt che prende anche argomenti
 ![Esempio argomenti comando code review](/notes-imgs/code-review-argomenti.png)
 
 ## Code Review Command:
-
 <https://github.com/academind/claude-code-course-resources/blob/main/other/commands/code-review.md>
 
-[Commit: definizione comando Code Review]()
+[Commit: definizione comando Code Review](https://github.com/simotae14/claude-code-practical-guide/commit/81ac2c4154d0d22117762c266178a2884dd2ac2f)
+
+Riavvio sessione claude in sto modo
+![Avvio claude in demo mode](/notes-imgs/claude-commands.png)
+
+ed appare nei comandi il nuovo comando
+![Nella lista dei comandi appare code-review](/notes-imgs/codereview-command.png)
+
+e lo chiamo con argomenti BUGS,SECURITY
+![Lancio il comando code review con argomenti](/notes-imgs/run-code-review.png)
+
+ed ottengo questo risultato
+![Risultato della review](/notes-imgs/review-result.png)
+
+Fixo alcuni dei punti
+[Commit: risultato dopo fix review]()
 
 ## Hook Events:
 
