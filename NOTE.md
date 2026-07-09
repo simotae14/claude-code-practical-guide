@@ -592,7 +592,24 @@ ed ottengo questo risultato
 ![Risultato della review](/notes-imgs/review-result.png)
 
 Fixo alcuni dei punti
-[Commit: risultato dopo fix review]()
+[Commit: risultato dopo fix review](https://github.com/simotae14/claude-code-practical-guide/commit/15d314f997eee2609e981902bda1163358169fdb)
+
+## Using Screenshots For Prompting With Feedback
+Andiamo ad aggiungere alcune funzionalita mancanti
+```
+In our app, add the following features:
+- display all notes that belong to the logged in user on the "/notes" route
+- upon clicking on a note, link to the "viewing page"
+- on that viewing page, render the note (JSON => custom JSX elements, with proper styling)
+```
+e lo lancio in plan mode
+
+[Commit: Implement note details UI]()
+
+poi anche sto prompt
+```
+In our app, make the note
+
 
 ## Hook Events:
 
