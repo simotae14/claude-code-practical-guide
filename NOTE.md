@@ -493,10 +493,10 @@ NextJS Best Practices Skill
 [Commit: NextJS Best Practices Skill](https://github.com/simotae14/claude-code-practical-guide/commit/385e22e0ddd6535fde52278d7f8fce81dccbfbc5)
 
 Using Modern Browser APIs Skill
-[Commit: Using Modern Browser APIs Skill]()
+[Commit: Using Modern Browser APIs Skill](https://github.com/simotae14/claude-code-practical-guide/commit/eddf3d3976e609c492d3333094c369df0366ce32)
 
-NextJS Best Practices Skill
-[Commit: NextJS Best Practices Skill]()
+Tailwind CSS Best Practices Skill
+[Commit: Tailwind CSS Best Practices Skill]()
 
 NextJS Best Practices Skill
 [Commit: NextJS Best Practices Skill]()
