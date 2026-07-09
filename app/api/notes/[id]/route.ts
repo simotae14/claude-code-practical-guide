@@ -69,3 +69,21 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
 
   return Response.json({ id, title, content, updated_at: now });
 }
+
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { id } = await params;
+  const existing = db.prepare("SELECT * FROM notes WHERE id = ?").get(id) as NoteRow | undefined;
+
+  if (!existing || existing.user_id !== session.user.id) {
+    return Response.json({ error: "Not found" }, { status: 404 });
+  }
+
+  db.prepare("DELETE FROM notes WHERE id = ? AND user_id = ?").run(id, session.user.id);
+
+  return Response.json({ success: true });
+}

@@ -604,11 +604,21 @@ In our app, add the following features:
 ```
 e lo lancio in plan mode
 
-[Commit: Implement note details UI]()
+[Commit: Implement note details UI](https://github.com/simotae14/claude-code-practical-guide/commit/109040c01646389298aae067c830bf52ae209d29)
 
 poi anche sto prompt
 ```
-In our app, make the note
+In our app, make the notes editable and deletaable.
+
+When viewing a note (as a creator of it), on that viewing page, there should be "Edit" and "Delete" buttons.
+
+"Edit" should be a link to the edit page where the note gets loaded into the TipTap editor. The title also should be editable.
+
+"Delete" should be a button that opens a confirmation <dialog>. Once confirmed, the note should be removed from the database and the user should be navigated back to the "/notes" route.
+```
+lo lancio in plan mode
+
+[Commit: implementazione edit and delete]()
 
 
 ## Hook Events:
