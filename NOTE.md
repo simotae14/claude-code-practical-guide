@@ -531,8 +531,28 @@ e lo lancio in plan mode
 ![Prompt per aggiungere redirect e protezione di alcune pagine](/notes-imgs/add-redirect-and-auth.png)
 Accetto piano e lo faccio implementare
 
-[Commit: aggiungi redirect post login e proteggiamo rotte non autenticate]()
+[Commit: aggiungi redirect post login e proteggiamo rotte non autenticate](https://github.com/simotae14/claude-code-practical-guide/commit/a3a670fd5e9d3e7e957b326bdeea67aa53380835)
 
+Continuiamo con le feautes, passiamo ad aggiungere del contenuto alle nostre pagine
+
+```
+Add the following features to our web app:
+- header component with title logo ("NextNotes") which links to "/notes" (using Next <Link>)
+- On @app\notes\page.tsx , add "New Note" link that links to the appropriate route
+- On the "New Note" route, add a <form> with the title input and rich text content input
+- Implement form submission handling + insert data into database
+
+Ensure modern, clean React & Next.js code with accessible JSX and clean, modern Tailwind styling.
+```
+![Prompt plan e implentazione Contenuti per header e creazione note](/notes-imgs/create-note-page.png)
+
+Aggiungo anche
+```
+Also add a logout button to the header (when the user is authenticated)
+```
+Approvo ed eseguo piano
+
+[Commit: creazione nota e mostrarla in dashboard]()
 
 ## Code Review Command:
 
