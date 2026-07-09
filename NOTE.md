@@ -478,7 +478,10 @@ Una volta finito gli chiedo se ha fatto tutto per bene
 Did you implement the component using React best practices and clean, modern HTML / JSX + Tailwind?
 ```
 che usa la nostra nuova skill
- 
+[Commit: definizione Custom Skill e implementazione autenticazione](https://github.com/simotae14/claude-code-practical-guide/commit/371d723f64c24c735dcc54c929b10ddf02111fdb)
+
+Bun Skill
+[Commit: Aggiunta Bun Skill]()
 
 ## Skills Metadata:
 
