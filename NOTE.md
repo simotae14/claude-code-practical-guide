@@ -435,7 +435,28 @@ vedo uso del subagent
 e mi ha trovato del codice che manca in base alla documentazione di better-auth
 ![Codice mancante](./notes-imgs/missing-code.png)
 
-[Commit: aggiunta di next cookies da better auth]()
+[Commit: aggiunta di next cookies da better auth](https://github.com/simotae14/claude-code-practical-guide/commit/de75e1f0e6f1f7317c4562df8c2eafd4909a1d22)
+
+## Intoducing Agent Skills
+Vediamo il grafo delle Agent Skills
+![Agent Skills](./notes-imgs/agent-skills-diagram.png)
+<https://agentskills.io/home>
+praticamente vanno ad arricchire il context
+![Skill Diagram](./notes-imgs/skill-diagram.png)
+oltre al markdown può contenere altri file opzionali ed anche scripts
+ref <https://agentskills.io/home>
+
+## Adding Custom Skills
+Per aggiungerne una locale basta aggiungere una cartella <em>skills</em> nella cartella <em>.claude</em>
+Dentro questa cartella devi creare una cartella per ogni skill
+ad es creo cartella <em>modern-best-practice-react-components</em> e poi dentro ogni cartella bisogna creare un file <em>SKILL.md</em> e dobbiamo usare sto nome.
+Dentro vado ad aggiungere alcuni metadati, e quelli required sono name e description, dove il nome deve prendere il nome della folder della skill
+[Doc metadata fields disponibili](https://code.claude.com/docs/en/plugins-reference#metadata-fields)
+Tra i metadata puoi scegliere di permettergli di accedere a un numero limitato di tools usando <em>allowed-tools</em>, oppure <em>context</em> se vogliamo fargli accedere al context
+Dentro la skill puoi mettere riferimenti ad altri documenti md che vanno ad approfondire determinate tematiche, come la ref che mettiamo agli useEffect
+
+Ovviamente puoi avere delle Skills globali dentro la cartella .claude generale. Per poterli condividere fra i vari progetti.
+
 
 ## Skills Metadata:
 
