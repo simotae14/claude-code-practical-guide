@@ -618,8 +618,16 @@ When viewing a note (as a creator of it), on that viewing page, there should be 
 ```
 lo lancio in plan mode
 
-[Commit: implementazione edit and delete]()
+[Commit: implementazione edit and delete](https://github.com/simotae14/claude-code-practical-guide/commit/82626fce562c47b111e5763a13430f2820d2043b)
 
+Se trovi dei buchi anche nella ui puoi fare screenshots 
+esempio per sto errore
+![Bug nel contenuto nota](/notes-imgs/bug.png)
+
+e lo passi come prompt
+![Prompt con bug nel contenuto nota](/notes-imgs/bug-prompt.png)
+
+[Commit: bugfixing using screenshots]()
 
 ## Hook Events:
 

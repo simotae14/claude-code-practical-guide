@@ -72,7 +72,7 @@ export function NoteDetailView({ id, title, content, updatedAt }: NoteDetailView
         onClick={(e) => {
           if (e.target === dialogRef.current) dialogRef.current?.close();
         }}
-        className="w-full max-w-sm rounded-lg border border-foreground/10 bg-background p-6 text-foreground backdrop:bg-black/40"
+        className="fixed top-1/2 left-1/2 m-0 w-full max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg border border-foreground/10 bg-background p-6 text-foreground backdrop:bg-black/40"
         aria-labelledby="delete-note-title"
       >
         <div className="flex flex-col gap-4">
