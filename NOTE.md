@@ -484,7 +484,10 @@ Bun Skill
 [Commit: Aggiunta Bun Skill](https://github.com/simotae14/claude-code-practical-guide/commit/8599e99fd7357afa77621c566a4d6d7b0130c0bd)
 
 Clean Typescript Skill
-[Commit: Write Clean Typescript Skill]()
+[Commit: Write Clean Typescript Skill](https://github.com/simotae14/claude-code-practical-guide/commit/383fbeb142a2da03f7e018ee5bea2aba82e3a1d8)
+
+Clean HTML and JSX Code Skill
+[Commit: Clean HTML and JSX Code Skill](https://github.com/simotae14/claude-code-practical-guide/commit/383fbeb142a2da03f7e018ee5bea2aba82e3a1d8)
 
 ## Skills Metadata:
 
