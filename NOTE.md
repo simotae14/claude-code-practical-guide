@@ -496,10 +496,10 @@ Using Modern Browser APIs Skill
 [Commit: Using Modern Browser APIs Skill](https://github.com/simotae14/claude-code-practical-guide/commit/eddf3d3976e609c492d3333094c369df0366ce32)
 
 Tailwind CSS Best Practices Skill
-[Commit: Tailwind CSS Best Practices Skill]()
+[Commit: Tailwind CSS Best Practices Skill](https://github.com/simotae14/claude-code-practical-guide/commit/d661491a3ef49c7d035633cfcae6f461761e49b4)
 
-NextJS Best Practices Skill
-[Commit: NextJS Best Practices Skill]()
+Web Security Skill
+[Commit: Web Security Skill]()
 
 ## Skills Metadata:
 
