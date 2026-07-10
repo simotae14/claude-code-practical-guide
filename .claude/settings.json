@@ -7,5 +7,18 @@
   "permissions": {
     "deny": ["Bash(**/.env)", "Read(**/.env)", "Write(**/.env)"]
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" & bun run format 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
 }

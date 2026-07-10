@@ -670,12 +670,74 @@ e lancio lo script format per formattare tutto come volevo
 bun run format
 ```
 
-[Commit: Aggiunto formatter]()
+[Commit: Aggiunto formatter](https://github.com/simotae14/claude-code-practical-guide/commit/dd5542ee37cc6005f15bd34e9a39d09ea73e19ad)
 
+## Hooks
+
+con essi posso reagire a certe azioni di Claude Code, ad esempio dopo che ha editato un file
+posso definire gli hooks o dentro i settings locali del progetto <em>settings.local.json</em> oppure in quello globale ovvero <em>settings.json</em>
+
+![Alternativa di definizione hooks](/notes-imgs/hooks-alternative.png)
 
 ## Hook Events:
-
 <https://code.claude.com/docs/en/hooks#hook-events>
+
+es: il PreToolUse
+
+![Doc PreToolUse](/notes-imgs/pretooluse.png)
+
+es: il PostToolUse
+
+![Doc PostToolUse](/notes-imgs/posttooluse.png)
+
+```json
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" & bun run format 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+```
+
+in sto modo se il comando di formattazione non va a buon fine non rompe nulla
+e CLAUDE_PROJECT_DIR indica la directory del progetto
+
+ogni volta che Claude Code finisce di lavorare su un file applichera hook
+
+![Comando hook in Claude](/notes-imgs/hooks-cmd.png)
+
+e li puoi anche settare da qui
+
+![Settare PostToolUse da Claude Code](/notes-imgs/posttooluse.png)
+
+Proviamo ad implementare un'altra funzionalita' e vedere se parte hook
+
+```
+In our web-app, add the "public sharing" feature.
+
+When adding or editing a note the user (owner) should be able to turn on public sharing. This must generate a unique link that leads to the note.
+
+When other users (including guest users who did not sign in) follow that link they can see the note but of course they can't edit or delete it. If sharing is turned off, the link should not lead anywhere anymore.
+```
+
+lo lancio in plan mode
+
+![Funzionalita condividi link pubblico](/notes-imgs/enable-sharing.png)
+
+![Apri link pubblico](/notes-imgs/apri-link-pubblico.png)
+
+![Disabilito link pubblico](/notes-imgs/disable-sharing.png)
+
+![Apri link pubblico disabilitato](/notes-imgs/apri-link-pubblico-disabilitato.png)
+
+[Commit: funzionalita link pubblico e aggiunta hook Post Tool Use]()
 
 ## Creating Custom Plugins:
 

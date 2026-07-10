@@ -9,6 +9,8 @@ interface NoteRow {
   title: string;
   content: string;
   updated_at: string;
+  is_public: number;
+  share_id: string | null;
 }
 
 export default async function NoteDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -17,7 +19,9 @@ export default async function NoteDetailPage({ params }: { params: Promise<{ id:
 
   const { id } = await params;
   const row = db
-    .prepare('SELECT id, title, content, updated_at FROM notes WHERE id = ? AND user_id = ?')
+    .prepare(
+      'SELECT id, title, content, updated_at, is_public, share_id FROM notes WHERE id = ? AND user_id = ?',
+    )
     .get(id, session.user.id) as NoteRow | undefined;
 
   if (!row) notFound();
@@ -28,6 +32,8 @@ export default async function NoteDetailPage({ params }: { params: Promise<{ id:
       title={row.title}
       content={JSON.parse(row.content)}
       updatedAt={row.updated_at}
+      isPublic={row.is_public === 1}
+      shareId={row.share_id}
     />
   );
 }
