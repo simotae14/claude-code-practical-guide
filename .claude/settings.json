@@ -5,11 +5,7 @@
   "effortLevel": "medium",
   "theme": "dark-daltonized",
   "permissions": {
-    "deny": [
-      "Bash(**/.env)",
-      "Read(**/.env)",
-      "Write(**/.env)"
-    ]
+    "deny": ["Bash(**/.env)", "Read(**/.env)", "Write(**/.env)"]
   },
   "alwaysThinkingEnabled": false
 }

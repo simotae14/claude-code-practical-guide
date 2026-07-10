@@ -627,7 +627,51 @@ esempio per sto errore
 e lo passi come prompt
 ![Prompt con bug nel contenuto nota](/notes-imgs/bug-prompt.png)
 
-[Commit: bugfixing using screenshots]()
+[Commit: bugfixing using screenshots](https://github.com/simotae14/claude-code-practical-guide/commit/5a2eabf0090f6c2d3c99fc5dcc6483feb5489fb9)
+
+# Undestanding and using hooks
+Gli hooks ci permettono di lanciare determinati comandi in determinati momenti dell'esecuzione di claude, simile ai lifecycle methods react
+Ad esempio mettiamo che voglio modificare la formattazione del codice togliendo le " e mettendo le '
+e voglio che claude attui questa formattazione.
+
+Aggiungo un formatter usando <bold>oxfmt</bold>
+
+lo installo con
+```
+bun add -D oxfmt
+```
+
+ed aggiungo lo script al package.json
+```
+"format": "oxfmt"
+```
+
+e creo un file di configurazione per la formattazione nella root repo
+lo creo lanciando da linea comando
+```
+bunx oxfmt --init
+```
+
+che genera il file <em>.oxfmtrc.json</em>
+
+e dentro definisco le mie rules
+```json
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [],
+  "singleQuote": true,
+  "jsxSingleQuote": true
+}
+```
+
+e lancio lo script format per formattare tutto come volevo
+
+```
+bun run format
+```
+
+[Commit: Aggiunto formatter]()
+
 
 ## Hook Events:
 

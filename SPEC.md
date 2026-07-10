@@ -8,16 +8,16 @@ A web application that enables authenticated users to create and manage personal
 
 ## 2. Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js (App Router) |
-| Runtime | Bun |
-| Language | TypeScript |
-| Styling | TailwindCSS |
-| Authentication | better-auth |
-| Rich Text Editor | TipTap |
-| Database | SQLite via Bun's built-in SQLite client |
-| Queries | Raw SQL statements |
+| Layer            | Technology                              |
+| ---------------- | --------------------------------------- |
+| Framework        | Next.js (App Router)                    |
+| Runtime          | Bun                                     |
+| Language         | TypeScript                              |
+| Styling          | TailwindCSS                             |
+| Authentication   | better-auth                             |
+| Rich Text Editor | TipTap                                  |
+| Database         | SQLite via Bun's built-in SQLite client |
+| Queries          | Raw SQL statements                      |
 
 ---
 
@@ -53,18 +53,18 @@ Authenticated users can:
 
 The TipTap editor must support the following formatting options:
 
-| Feature | Description |
-|---|---|
-| Bold | Inline bold text |
-| Italic | Inline italic text |
-| Heading 1 | Large section heading |
-| Heading 2 | Medium section heading |
-| Heading 3 | Small section heading |
-| Normal text | Default paragraph style |
-| Inline code | Short inline `code` spans |
-| Code block | Multi-line code snippet block |
-| Bullet list | Unordered bullet point list |
-| Horizontal rule | Visual separator line |
+| Feature         | Description                   |
+| --------------- | ----------------------------- |
+| Bold            | Inline bold text              |
+| Italic          | Inline italic text            |
+| Heading 1       | Large section heading         |
+| Heading 2       | Medium section heading        |
+| Heading 3       | Small section heading         |
+| Normal text     | Default paragraph style       |
+| Inline code     | Short inline `code` spans     |
+| Code block      | Multi-line code snippet block |
+| Bullet list     | Unordered bullet point list   |
+| Horizontal rule | Visual separator line         |
 
 ---
 
@@ -92,85 +92,85 @@ The following tables are created and managed automatically by **better-auth**. D
 
 #### `user`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | TEXT | Primary key |
-| `name` | TEXT | Display name |
-| `email` | TEXT | Unique |
-| `emailVerified` | BOOLEAN | |
-| `image` | TEXT | Optional, profile image URL |
-| `createdAt` | DATE | |
-| `updatedAt` | DATE | |
+| Column          | Type    | Notes                       |
+| --------------- | ------- | --------------------------- |
+| `id`            | TEXT    | Primary key                 |
+| `name`          | TEXT    | Display name                |
+| `email`         | TEXT    | Unique                      |
+| `emailVerified` | BOOLEAN |                             |
+| `image`         | TEXT    | Optional, profile image URL |
+| `createdAt`     | DATE    |                             |
+| `updatedAt`     | DATE    |                             |
 
 #### `session`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | TEXT | Primary key |
-| `userId` | TEXT | Foreign key → `user.id` (cascade delete) |
-| `token` | TEXT | Unique session token |
-| `expiresAt` | DATE | |
-| `ipAddress` | TEXT | Optional |
-| `userAgent` | TEXT | Optional |
-| `createdAt` | DATE | |
-| `updatedAt` | DATE | |
+| Column      | Type | Notes                                    |
+| ----------- | ---- | ---------------------------------------- |
+| `id`        | TEXT | Primary key                              |
+| `userId`    | TEXT | Foreign key → `user.id` (cascade delete) |
+| `token`     | TEXT | Unique session token                     |
+| `expiresAt` | DATE |                                          |
+| `ipAddress` | TEXT | Optional                                 |
+| `userAgent` | TEXT | Optional                                 |
+| `createdAt` | DATE |                                          |
+| `updatedAt` | DATE |                                          |
 
 #### `account`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | TEXT | Primary key |
-| `userId` | TEXT | Foreign key → `user.id` (cascade delete) |
-| `accountId` | TEXT | Provider account ID, or `userId` for credential accounts |
-| `providerId` | TEXT | e.g. `"credential"` for email/password |
-| `accessToken` | TEXT | Optional |
-| `refreshToken` | TEXT | Optional |
-| `accessTokenExpiresAt` | DATE | Optional |
-| `refreshTokenExpiresAt` | DATE | Optional |
-| `scope` | TEXT | Optional |
-| `idToken` | TEXT | Optional |
-| `password` | TEXT | Optional, hashed — used for email/password auth |
-| `createdAt` | DATE | |
-| `updatedAt` | DATE | |
+| Column                  | Type | Notes                                                    |
+| ----------------------- | ---- | -------------------------------------------------------- |
+| `id`                    | TEXT | Primary key                                              |
+| `userId`                | TEXT | Foreign key → `user.id` (cascade delete)                 |
+| `accountId`             | TEXT | Provider account ID, or `userId` for credential accounts |
+| `providerId`            | TEXT | e.g. `"credential"` for email/password                   |
+| `accessToken`           | TEXT | Optional                                                 |
+| `refreshToken`          | TEXT | Optional                                                 |
+| `accessTokenExpiresAt`  | DATE | Optional                                                 |
+| `refreshTokenExpiresAt` | DATE | Optional                                                 |
+| `scope`                 | TEXT | Optional                                                 |
+| `idToken`               | TEXT | Optional                                                 |
+| `password`              | TEXT | Optional, hashed — used for email/password auth          |
+| `createdAt`             | DATE |                                                          |
+| `updatedAt`             | DATE |                                                          |
 
 #### `verification`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | TEXT | Primary key |
+| Column       | Type | Notes                                |
+| ------------ | ---- | ------------------------------------ |
+| `id`         | TEXT | Primary key                          |
 | `identifier` | TEXT | The verification target (e.g. email) |
-| `value` | TEXT | The value to verify |
-| `expiresAt` | DATE | |
-| `createdAt` | DATE | |
-| `updatedAt` | DATE | |
+| `value`      | TEXT | The value to verify                  |
+| `expiresAt`  | DATE |                                      |
+| `createdAt`  | DATE |                                      |
+| `updatedAt`  | DATE |                                      |
 
 ---
 
 ## 6. Pages & Routing
 
-| Route | Auth Required | Description |
-|---|---|---|
-| `/` | No | Landing / home page |
-| `/authenticate` | No | Combined sign in / sign up form |
-| `/notes` | Yes | List of all user's notes |
-| `/notes/new` | Yes | Create a new note |
-| `/notes/[id]` | Yes | View and edit a specific note |
-| `/notes/public/[shareId]` | No | Read-only view of a shared note |
+| Route                     | Auth Required | Description                     |
+| ------------------------- | ------------- | ------------------------------- |
+| `/`                       | No            | Landing / home page             |
+| `/authenticate`           | No            | Combined sign in / sign up form |
+| `/notes`                  | Yes           | List of all user's notes        |
+| `/notes/new`              | Yes           | Create a new note               |
+| `/notes/[id]`             | Yes           | View and edit a specific note   |
+| `/notes/public/[shareId]` | No            | Read-only view of a shared note |
 
 ---
 
 ## 7. API Routes
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| GET | `/api/notes` | Yes | Fetch all notes for the authenticated user |
-| POST | `/api/notes` | Yes | Create a new note |
-| GET | `/api/notes/[id]` | Yes | Fetch a single note by ID |
-| PUT | `/api/notes/[id]` | Yes | Update a note's title and/or content |
-| DELETE | `/api/notes/[id]` | Yes | Delete a note |
-| POST | `/api/notes/[id]/share` | Yes | Enable public sharing, generate `share_id` |
-| DELETE | `/api/notes/[id]/share` | Yes | Disable public sharing, clear `share_id` |
-| GET | `/api/notes/public/[shareId]` | No | Fetch a publicly shared note |
+| Method | Path                          | Auth | Description                                |
+| ------ | ----------------------------- | ---- | ------------------------------------------ |
+| GET    | `/api/notes`                  | Yes  | Fetch all notes for the authenticated user |
+| POST   | `/api/notes`                  | Yes  | Create a new note                          |
+| GET    | `/api/notes/[id]`             | Yes  | Fetch a single note by ID                  |
+| PUT    | `/api/notes/[id]`             | Yes  | Update a note's title and/or content       |
+| DELETE | `/api/notes/[id]`             | Yes  | Delete a note                              |
+| POST   | `/api/notes/[id]/share`       | Yes  | Enable public sharing, generate `share_id` |
+| DELETE | `/api/notes/[id]/share`       | Yes  | Disable public sharing, clear `share_id`   |
+| GET    | `/api/notes/public/[shareId]` | No   | Fetch a publicly shared note               |
 
 ---
 

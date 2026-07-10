@@ -1,17 +1,17 @@
-import type { JSONContent } from "@tiptap/react";
+import type { JSONContent } from '@tiptap/react';
 
 type Mark = { type: string; attrs?: Record<string, unknown> };
 
 function applyMarks(text: string, marks: Mark[] = []): React.ReactNode {
   return marks.reduce<React.ReactNode>((children, mark, i) => {
     switch (mark.type) {
-      case "bold":
+      case 'bold':
         return <strong key={i}>{children}</strong>;
-      case "italic":
+      case 'italic':
         return <em key={i}>{children}</em>;
-      case "code":
+      case 'code':
         return <code key={i}>{children}</code>;
-      case "strike":
+      case 'strike':
         return <s key={i}>{children}</s>;
       default:
         return children;
@@ -23,36 +23,36 @@ function renderNode(node: JSONContent, key: number | string): React.ReactNode {
   const children = node.content?.map((child, i) => renderNode(child, i));
 
   switch (node.type) {
-    case "doc":
+    case 'doc':
       return <>{children}</>;
-    case "paragraph":
+    case 'paragraph':
       return <p key={key}>{children}</p>;
-    case "heading": {
+    case 'heading': {
       const level = (node.attrs?.level as number) ?? 1;
       if (level === 2) return <h2 key={key}>{children}</h2>;
       if (level === 3) return <h3 key={key}>{children}</h3>;
       return <h1 key={key}>{children}</h1>;
     }
-    case "bulletList":
+    case 'bulletList':
       return <ul key={key}>{children}</ul>;
-    case "orderedList":
+    case 'orderedList':
       return <ol key={key}>{children}</ol>;
-    case "listItem":
+    case 'listItem':
       return <li key={key}>{children}</li>;
-    case "blockquote":
+    case 'blockquote':
       return <blockquote key={key}>{children}</blockquote>;
-    case "codeBlock":
+    case 'codeBlock':
       return (
         <pre key={key}>
           <code>{children}</code>
         </pre>
       );
-    case "horizontalRule":
+    case 'horizontalRule':
       return <hr key={key} />;
-    case "hardBreak":
+    case 'hardBreak':
       return <br key={key} />;
-    case "text":
-      return <span key={key}>{applyMarks(node.text ?? "", node.marks as Mark[] | undefined)}</span>;
+    case 'text':
+      return <span key={key}>{applyMarks(node.text ?? '', node.marks as Mark[] | undefined)}</span>;
     default:
       return children ? <span key={key}>{children}</span> : null;
   }
@@ -60,8 +60,10 @@ function renderNode(node: JSONContent, key: number | string): React.ReactNode {
 
 export function NoteContent({ content }: { content: JSONContent }) {
   if (!content?.content?.length) {
-    return <p className="text-sm text-foreground/50">Empty note.</p>;
+    return <p className='text-sm text-foreground/50'>Empty note.</p>;
   }
 
-  return <div className="prose-editor">{content.content.map((node, i) => renderNode(node, i))}</div>;
+  return (
+    <div className='prose-editor'>{content.content.map((node, i) => renderNode(node, i))}</div>
+  );
 }

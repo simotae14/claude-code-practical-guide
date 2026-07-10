@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import type { JSONContent } from "@tiptap/react";
-import { EditNoteForm } from "./edit-note-form";
+import { useRouter } from 'next/navigation';
+import type { JSONContent } from '@tiptap/react';
+import { EditNoteForm } from './edit-note-form';
 
 interface EditNotePageProps {
   id: string;
@@ -15,7 +15,7 @@ export function EditNotePage({ id, title, content }: EditNotePageProps) {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-semibold text-foreground">Edit note</h1>
+      <h1 className='mb-6 text-2xl font-semibold text-foreground'>Edit note</h1>
       <EditNoteForm
         id={id}
         initialTitle={title}

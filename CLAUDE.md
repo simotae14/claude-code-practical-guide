@@ -22,6 +22,7 @@ bun lint       # run ESLint
 No test suite is configured. Bun's built-in test runner (`bun test`) can be used if tests are added.
 
 To set up the database (auth tables managed by better-auth, not manually):
+
 ```bash
 npx auth@latest migrate
 ```

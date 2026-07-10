@@ -1,9 +1,9 @@
-import { Database } from "bun:sqlite";
+import { Database } from 'bun:sqlite';
 
-export const db = new Database("database.sqlite", { create: true });
+export const db = new Database('database.sqlite', { create: true });
 
-db.run("PRAGMA journal_mode = WAL;");
-db.run("PRAGMA foreign_keys = ON;");
+db.run('PRAGMA journal_mode = WAL;');
+db.run('PRAGMA foreign_keys = ON;');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS notes (
