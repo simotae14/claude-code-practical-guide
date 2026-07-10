@@ -2,7 +2,7 @@
 
 Doc ➔ <https://code.claude.com/docs/en/overview>
 
-commit **[00 initial commit](https://github.com/simotae14/claude-code-practical-guide/commit/d9ca7542661fa566e0862492ab3146b4e068fa10 "00 initial commit")**
+commit **[00 initial commit](https://github.com/simotae14/claude-code-practical-guide/commit/d9ca7542661fa566e0862492ab3146b4e068fa10 '00 initial commit')**
 
 ## Starting Project:
 
@@ -12,11 +12,11 @@ commit **[00 initial commit](https://github.com/simotae14/claude-code-practical-
 
 <https://code.claude.com/docs/en/vs-code>
 
-commit **[01 Claude Base Usage](https://github.com/simotae14/claude-code-practical-guide/commit/0f91db8320dc85168068f8b0b6cb8649640d3631 "01 Claude Base Usage")**
+commit **[01 Claude Base Usage](https://github.com/simotae14/claude-code-practical-guide/commit/0f91db8320dc85168068f8b0b6cb8649640d3631 '01 Claude Base Usage')**
 
-commit **[02 Claude project config](https://github.com/simotae14/claude-code-practical-guide/commit/0d5e1cca8d659e944743958b756e0042f967df35 "02 Claude project config")**
+commit **[02 Claude project config](https://github.com/simotae14/claude-code-practical-guide/commit/0d5e1cca8d659e944743958b756e0042f967df35 '02 Claude project config')**
 
-commit **[03 Claude add project settings](https://github.com/simotae14/claude-code-practical-guide/commit/8546a4238be9db7468018dd621c555400350f531 "03 Claude add project settings")**
+commit **[03 Claude add project settings](https://github.com/simotae14/claude-code-practical-guide/commit/8546a4238be9db7468018dd621c555400350f531 '03 Claude add project settings')**
 
 ## Understanding Sessions & Context:
 
@@ -40,6 +40,7 @@ che ti mostra l'uso rimanente che hai per il tuo piano claude
 ![Usage](./notes-imgs/usage.png)
 
 Per compattare manualmente una conversazione puoi usare il comando /compact
+
 ```
 /compact
 ```
@@ -130,27 +131,34 @@ devi usarlo con molta parsimonia
 e se accetti avvia claude in sta modalità
 
 ## Running Claude Code via Docker Sandboxes
+
 Per evitare di eseguire Claude con tutti i permessi e dargli possibilità di cancellare la memoria fisica possiamo creare una sandbox protetta di docker dove dare accesso solo ad un numero limitato di risorse scelte da noi a Claude.
 
 ```Shell
 $ docker sandbox run claude
 ```
+
 deprecato ora usare
+
 ```Shell
 $ docker sbx run claude
 ```
+
 entrambi non vanno con la versione recente di docker, cmq devi anche nel caso rifare login a claude dato che stai usandolo in un altro environment
 
 ![dockerSandbox](./notes-imgs/docker-sandbox.png)
 ![dockerSandboxResult](./notes-imgs/docker-sandbox-result.png)
 
 ## Using Claude Code's Native Sandboxing
+
 invece di usare docker puoi usare direttamente la sandbox nativa di claude code
 
 semplicemente col comando
+
 ```
 /sandbox
 ```
+
 ti chiede che modalità di sandbox vuoi usare
 ![sandbox](./notes-imgs/sandbox.png)
 In windows non funziona, solo con macOs, Linux e WSL2 è supportato
@@ -167,21 +175,27 @@ come vedi anche se eseguo in dangerous mode non ha accesso a tutto mio hard driv
 ![sandbox-alert](./notes-imgs/sandbox-alert.png)
 
 ## Undoing Actions & The importance of version control systems
+
 Permette di revertare alcune modifiche o annullarle
 due modi
+
 - premi due volte Escape (ESC) e ti mostrerà messaggio Rewind
-![rewind](./notes-imgs/rewind.png)
-e posso scegliere da dove voglio revertare il codice, dove current indica lo snapshot corrente ma possiamo andare addirittura all'inizio della conversazione
-![restore](./notes-imgs/restore.png)
+  ![rewind](./notes-imgs/rewind.png)
+  e posso scegliere da dove voglio revertare il codice, dove current indica lo snapshot corrente ma possiamo andare addirittura all'inizio della conversazione
+  ![restore](./notes-imgs/restore.png)
 - usare il comando /rewind
+
 ```
 /rewind
 ```
+
 ![rewind-command](./notes-imgs/rewind-command.png)
 e ti permette sempre di selezionare a che punto tornare
 
 # Using Claude Code
+
 ## Intro
+
 Vediamo ora l'uso vero e proprio di Claude Code
 ![use-claude-code](./notes-imgs/use-claude-code.png)
 Come usare il Prompt & Context Engineering
@@ -191,16 +205,19 @@ Usare subagents custom
 E lavorare con le Agent Skills
 
 ## Making Sense of Prompt & Context Engineering
+
 ![prompt-eng](./notes-imgs/prompt-eng.png)
 un miglior input da migliori risultati
 
-e un buon input è dato da 
+e un buon input è dato da
+
 - istruzioni specifiche
-![specific-instruction](./notes-imgs/specific-instruction.png)
+  ![specific-instruction](./notes-imgs/specific-instruction.png)
 - un contesto rilevante
-![relevant-context](./notes-imgs/relevant-context.png)
+  ![relevant-context](./notes-imgs/relevant-context.png)
 
 ## Prompt Engineerging in Action & Working with Specs
+
 Creaimo un app per prendere note usando un Rich Text Editor
 
 iniziamo col prompt
@@ -219,50 +236,60 @@ Inoltre per utenti e autenticazione vogliamo usar ela Better Auth library
 che necessita di user in una determinata shape <https://better-auth.com/docs/concepts/database#user>
 Copio la documentazione in Markdown
 e la wrappo in dei tag xml che sono molto utili per fare comprendere
+
 ```
 We're building an app described in @SPEC.md .
 Please format this file as proper markdown.
-  
+
 Also update the file and update the part about the "users" table and auth-related tables.
 We're using the better-auth library which expects a certain database structure.
-  
+
 Here's the official better-auth database documentation article:
 <better-auth-database-docs>
 [Pasted text #1 +1026 lines]
 </better-auth-database-docs>
 ```
+
 ![prompt-and-context](./notes-imgs/prompt-and-context.png)
 Dato che non voglio che mi chieda permessi posso schiacciare Shift+Tab per entrare in accept edits mood
 ![shift-tab](./notes-imgs/shift-tab.png)
 
 ## SPEC.MD:
+
 <https://github.com/academind/claude-code-course-resources/blob/main/code-snapshots/finished-project/SPEC.MD>
 
 come risultato finale mi aspetto un markdown formattato correttamente e con tutte le info, controllare per bene output
 [Commit: generazione e review dello SPEC markdown file](https://github.com/simotae14/claude-code-practical-guide/commit/d3229be44b81f2edab22583c55a3cfd258579ee5)
 
 ## Inizializzare un Progetto Claude
+
 Cominciamo ad installare delle dipendenze per cui non mi serve aiuto di Claude ovvero
+
 ```
 bun add better-auth zod @tiptap/react @tiptap/pm @tiptap/starter-kit
 ```
+
 lo facciamo noi perchè spesso se Claude cerca di installare dipendenze modifica il package.json file aggiungendo versioni vecchie.
 
 Inoltre installo un package che mi serve solo come dev dependency
+
 ```
 bun add -D @types/bun
 ```
 
 Apro una nuova sessione Claude code e ogni volta che apro un nuovo lavoro con claude code su un progetto, che sia nuovo o un repo già esistente
 runno il comando /init
+
 ```
 /init
 ```
+
 che analizza il codebase e genera una sintesi dell'analisi su un file CLAUDE.md
 ![claude-init](./notes-imgs/claude-init.png)
 [Commit: init progetto e generazione CLAUDE.md file](https://github.com/simotae14/claude-code-practical-guide/commit/a092f86d27442511209b137a6fb2b7ce0b4e60f9)
 
 ## Crafting great CLAUDE.md files
+
 Ogni repo deve avere almeno un Claude file alla root del progetto.
 E viene caricato ad ogni sessione Claude Code sul repo.
 Quindi non deve essere troppo lungo.
@@ -278,7 +305,9 @@ Posso poi aggiungere diversi Claude.md file in diverse subfolders, caricati solo
 [Commit: customizzare il CLAUDE.md file](https://github.com/simotae14/claude-code-practical-guide/commit/6836ba575e18e7da982828ad143425d8dc515d7d)
 
 ## Cominciamo il Plan Mode
+
 Creiamo una nuova sessione con questo prompt
+
 ```
 Let's start building the application described in @SPEC.MD .
 
@@ -301,6 +330,7 @@ e poi una volta fatto seleziono "Yes, auto-accept edits"
 [Commit: Accettare e lasciare implementare il Piano](https://github.com/simotae14/claude-code-practical-guide/commit/8511ad1bbcad0e67dd169d010acf7b225386da66)
 
 ## Uso dei Tools Built-in di Claude Code
+
 Creo una nuova sessione e chiedo a Claude Code di implementare autenticazione e db access
 
 ```
@@ -308,14 +338,17 @@ Implement authentication and database access.
 
 Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
 ```
+
 può riuscire a farlo perchè sono cose descritte nello SPEC file che è referenziato nel CLAUDE file.
 
 volendo posso esplicitarlo cmq
+
 ```
 Implement authentication and database access as described in @SPEC.md .
 
 Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the db.ts file and make sure WAL mode is used and all required database tables are created if they don't exist yet.
 ```
+
 ma dato che usiamo Bun e Better-Auth e non lo stiamo esplicitando potremmo ottenere qualcosa di sbagliato da questo prompt.
 quindi vale la pena aggiungere i riferimenti alla documentazione di questi tools
 
@@ -327,6 +360,7 @@ Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the d
 Visit the official docs websites:
 - https://bun.com/docs/runtime/sqlite
 ```
+
 oppure scrivere esplicitamente di cercare la doc lui nel web
 
 ```
@@ -336,9 +370,11 @@ Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the d
 
 Use web search to find the relevant documentation for Bun SQLite and better-auth setup (with next.js and Bun SQLite).
 ```
+
 ![Implement Auth](./notes-imgs/implement-auth.png)
 
 ## Using MCP Servers and More on Permissions
+
 [Link Documentazione](https://modelcontextprotocol.io/docs/getting-started/intro)
 
 ## Context7 MCP:
@@ -349,14 +385,17 @@ In grado di aggiungere al context la documentazione necessaria per usare determi
 Nella pagina github ci sono pure le istruzioni per l'installazione
 
 questa è installazione locale al progetto
+
 ```
 claude mcp add context7 -- npx -y @upstash/context7-mcp
 ```
+
 e dopo averlo aggiunto
 
 ![MCP Context 7](./notes-imgs/context-7.png)
 
 se invece lo voglio globale
+
 ```
 claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp
 ```
@@ -370,6 +409,7 @@ Add a "lib" folder with "auth.ts" and "db.ts" files. Export a db handle in the d
 
 Use web search or context7 mcp to find the relevant documentation for Bun SQLite and better-auth setup (with next.js and Bun SQLite).
 ```
+
 e lo lancio in plan mode
 
 dato che è la prima volta che uso context7 mi chiederà permesso
@@ -381,7 +421,9 @@ Accetto il suo piano e glielo faccio eseguire
 [Commit Use Context7 MCP to implement autj and db access](https://github.com/simotae14/claude-code-practical-guide/commit/25691b00089d1bf10b4b50e65f6a997aaa6cbabd)
 
 ## Understanding Subagents
+
 Mettiamo di voler usare Claude Code per valutare l'implementazione precedente.
+
 ```
 We're building @SPEC.MD .
 
@@ -389,11 +431,13 @@ Please evaluate existing codebase to check whether authentication and database a
 
 Use web search or context7 mcp to look up docs.
 ```
+
 non lanciarlo ne in edit che in plan mode
 mentre lo fa usa dei subagents, come l'explore in background
 ogni puntino indica attività nel main agent ed invece quello che vediamo indentato è nel subagent
 
 ## Creating and Using a Custom Subagent
+
 La lettura della documentazione con context7 avviene direttamente nel main context e quindi si mangia token
 Quindi vale la pena creare un custom Documentation Explorer Subagent
 
@@ -404,6 +448,7 @@ per farlo nella cartella <strong>.claude</strong> vado a inserire una cartella <
 <https://github.com/academind/claude-code-course-resources/blob/main/other/subagent/DocsExplorer.md>
 
 Inoltre qui un link a tutti i tool disponibili in Claude
+
 ## Available Tools:
 
 <https://code.claude.com/docs/en/settings#tools-available-to-claude>
@@ -411,6 +456,7 @@ Inoltre qui un link a tutti i tool disponibili in Claude
 al momento l'agent che abbiamo creato è locale al progetto ma possiamo anche metterlo come globale nel nostro pc aggiungendolo nella cartella <strong>.claude</strong> principale dove ci sarà lo stesso corrispettivo.
 
 Riprovo ora in una nuova sessione Claude a lanciare sto prompt
+
 ```
 We're building @SPEC.MD .
 
@@ -418,16 +464,20 @@ Please evaluate existing codebase to check whether authentication and database a
 
 Use web search or context7 mcp to look up docs.
 ```
+
 dovrebbe usare il nostro sub agent
 
 [Commit: creazione subagent custom DocsExplorer](https://github.com/simotae14/claude-code-practical-guide/commit/b58961d5135401097af918d8106b5e73e06443cd)
 
 ## Encouraging Agent Usage
+
 Per forzare uso del nuovo Agent basta esplicitarlo nel Claude.md file
 Aggiungo
+
 ```
 Whenever working with any third-party library or something similar, you MUST look up the official documentation to ensure that you're working with up-to-date information. Use the DocsExplorer subagent for efficient documentation lookup.
 ```
+
 riprovo nuovamente a lanciare il prompt precedente
 vedo uso del subagent
 ![Uso ExploreDoc Subagent](./notes-imgs/subagent-ex.png)
@@ -438,6 +488,7 @@ e mi ha trovato del codice che manca in base alla documentazione di better-auth
 [Commit: aggiunta di next cookies da better auth](https://github.com/simotae14/claude-code-practical-guide/commit/de75e1f0e6f1f7317c4562df8c2eafd4909a1d22)
 
 ## Intoducing Agent Skills
+
 Vediamo il grafo delle Agent Skills
 ![Agent Skills](./notes-imgs/agent-skills-diagram.png)
 <https://agentskills.io/home>
@@ -447,12 +498,15 @@ oltre al markdown può contenere altri file opzionali ed anche scripts
 ref <https://agentskills.io/home>
 
 ## Adding Custom Skills
+
 Per aggiungerne una locale basta aggiungere una cartella <em>skills</em> nella cartella <em>.claude</em>
 Dentro questa cartella devi creare una cartella per ogni skill
 ad es creo cartella <em>modern-best-practice-react-components</em> e poi dentro ogni cartella bisogna creare un file <em>SKILL.md</em> e dobbiamo usare sto nome.
 Dentro vado ad aggiungere alcuni metadati, e quelli required sono name e description, dove il nome deve prendere il nome della folder della skill
 [Doc metadata fields disponibili](https://code.claude.com/docs/en/plugins-reference#metadata-fields)
+
 ## Skills Metadata:
+
 <https://code.claude.com/docs/en/skills#frontmatter-reference>
 Tra i metadata puoi scegliere di permettergli di accedere a un numero limitato di tools usando <em>allowed-tools</em>, oppure <em>context</em> se vogliamo fargli accedere al context
 Dentro la skill puoi mettere riferimenti ad altri documenti md che vanno ad approfondire determinate tematiche, come la ref che mettiamo agli useEffect
@@ -461,12 +515,14 @@ Ovviamente puoi avere delle Skills globali dentro la cartella .claude generale. 
 [Commit: Create Custom Skill](https://github.com/simotae14/claude-code-practical-guide/commit/178b7e83cedb4a225e3bcd2d23d45a94b02b382b)
 
 Ora se vado direttamente in claude con questo prompt
+
 ```
 Let's add a proper authentication route / page content to this app. We only support email + password auth.
 Users can switch between models, implemented via search params.
 
 No password resetting for this demo app
 ```
+
 ![Definizione del prompt](/notes-imgs/skill-usage-prompt.png)
 Una volta elaborato il piano gli diciamo che non vogliamo collezionare il nome utente
 ![Richiedere cambiamenti al piano](/notes-imgs/plan-auth-req-changes.png)
@@ -476,9 +532,11 @@ e lo eseguo in plan mode
 
 Una volta finito gli chiedo se ha fatto tutto per bene
 ![Conferma lavoro eseguito correttamente](/notes-imgs/msg-finale-conferma.png)
+
 ```
 Did you implement the component using React best practices and clean, modern HTML / JSX + Tailwind?
 ```
+
 che usa la nostra nuova skill
 [Commit: definizione Custom Skill e implementazione autenticazione](https://github.com/simotae14/claude-code-practical-guide/commit/371d723f64c24c735dcc54c929b10ddf02111fdb)
 
@@ -508,6 +566,7 @@ Web Security Skill
 [Commit: Web Security Skill](https://github.com/simotae14/claude-code-practical-guide/commit/e4b8695faa6a489be108cdf4a64d00a803d1499e)
 
 ## Using Agent Skills as Commands
+
 Dopo aver definito tutte le varie custom skills avrò anche altrettanti / commands
 ![Elenco delle nuove skill come comandi](/notes-imgs/list-skill-as-commands.png)
 Ti permettono di avere in claude delle extra funzionalità.
@@ -516,6 +575,7 @@ Sono comandi che però definiscono best practices ma non fanno nulla quindi se l
 ![Lancio da linea di comando di una delle nostre skill](/notes-imgs/launch-skill-cmd.png)
 
 ## Iterating on the Demo app
+
 aggiungiamo il redirect post login e signup alla dashboard non permettendo accesso se non loggati
 
 ```
@@ -527,6 +587,7 @@ As a next step, add the following features:
 
 Use modern Next.js features and focus on writing clean, effiecient React / Next.js code.
 ```
+
 e lo lancio in plan mode
 ![Prompt per aggiungere redirect e protezione di alcune pagine](/notes-imgs/add-redirect-and-auth.png)
 Accetto piano e lo faccio implementare
@@ -544,22 +605,27 @@ Add the following features to our web app:
 
 Ensure modern, clean React & Next.js code with accessible JSX and clean, modern Tailwind styling.
 ```
+
 ![Prompt plan e implentazione Contenuti per header e creazione note](/notes-imgs/create-note-page.png)
 
 Aggiungo anche
+
 ```
 Also add a logout button to the header (when the user is authenticated)
 ```
+
 Approvo ed eseguo piano
 
 [Commit: creazione nota e mostrarla in dashboard](https://github.com/simotae14/claude-code-practical-guide/commit/2a716f1d071eb330eda95a30bedb1a218b810045)
 
 ## Building & Using Custom Commands (Prompt Templates)
+
 Andiamo a cercare di fare una review profonda del codice generato focalizzandoci su sicurezza e bugs.
 
 ```
 Perform an in-depth code review of our codebase - focus on security and logical bugs.
 ```
+
 il problema è che vorremmo fare + di una review quindi probabilmente dovremo ripetere spesso sto prompt (o uno più elaborato)
 Qui entrano in gioco i <strong>Custom commands</strong> che puoi aggiungere dentro la cartella <em>.claude</em> del progetto o globale e dentro crei una cartella <em>commands</em>.
 E dentro ad esempio creo il mio comando <em>code-review.md</em>
@@ -575,6 +641,7 @@ e poi c'è la parte di prompt che prende anche argomenti
 ![Esempio argomenti comando code review](/notes-imgs/code-review-argomenti.png)
 
 ## Code Review Command:
+
 <https://github.com/academind/claude-code-course-resources/blob/main/other/commands/code-review.md>
 
 [Commit: definizione comando Code Review](https://github.com/simotae14/claude-code-practical-guide/commit/81ac2c4154d0d22117762c266178a2884dd2ac2f)
@@ -595,18 +662,22 @@ Fixo alcuni dei punti
 [Commit: risultato dopo fix review](https://github.com/simotae14/claude-code-practical-guide/commit/15d314f997eee2609e981902bda1163358169fdb)
 
 ## Using Screenshots For Prompting With Feedback
+
 Andiamo ad aggiungere alcune funzionalita mancanti
+
 ```
 In our app, add the following features:
 - display all notes that belong to the logged in user on the "/notes" route
 - upon clicking on a note, link to the "viewing page"
 - on that viewing page, render the note (JSON => custom JSX elements, with proper styling)
 ```
+
 e lo lancio in plan mode
 
 [Commit: Implement note details UI](https://github.com/simotae14/claude-code-practical-guide/commit/109040c01646389298aae067c830bf52ae209d29)
 
 poi anche sto prompt
+
 ```
 In our app, make the notes editable and deletaable.
 
@@ -616,11 +687,12 @@ When viewing a note (as a creator of it), on that viewing page, there should be 
 
 "Delete" should be a button that opens a confirmation <dialog>. Once confirmed, the note should be removed from the database and the user should be navigated back to the "/notes" route.
 ```
+
 lo lancio in plan mode
 
 [Commit: implementazione edit and delete](https://github.com/simotae14/claude-code-practical-guide/commit/82626fce562c47b111e5763a13430f2820d2043b)
 
-Se trovi dei buchi anche nella ui puoi fare screenshots 
+Se trovi dei buchi anche nella ui puoi fare screenshots
 esempio per sto errore
 ![Bug nel contenuto nota](/notes-imgs/bug.png)
 
@@ -630,6 +702,7 @@ e lo passi come prompt
 [Commit: bugfixing using screenshots](https://github.com/simotae14/claude-code-practical-guide/commit/5a2eabf0090f6c2d3c99fc5dcc6483feb5489fb9)
 
 # Undestanding and using hooks
+
 Gli hooks ci permettono di lanciare determinati comandi in determinati momenti dell'esecuzione di claude, simile ai lifecycle methods react
 Ad esempio mettiamo che voglio modificare la formattazione del codice togliendo le " e mettendo le '
 e voglio che claude attui questa formattazione.
@@ -637,17 +710,20 @@ e voglio che claude attui questa formattazione.
 Aggiungo un formatter usando <bold>oxfmt</bold>
 
 lo installo con
+
 ```
 bun add -D oxfmt
 ```
 
 ed aggiungo lo script al package.json
+
 ```
 "format": "oxfmt"
 ```
 
 e creo un file di configurazione per la formattazione nella root repo
 lo creo lanciando da linea comando
+
 ```
 bunx oxfmt --init
 ```
@@ -655,6 +731,7 @@ bunx oxfmt --init
 che genera il file <em>.oxfmtrc.json</em>
 
 e dentro definisco le mie rules
+
 ```json
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
@@ -680,6 +757,7 @@ posso definire gli hooks o dentro i settings locali del progetto <em>settings.lo
 ![Alternativa di definizione hooks](/notes-imgs/hooks-alternative.png)
 
 ## Hook Events:
+
 <https://code.claude.com/docs/en/hooks#hook-events>
 
 es: il PreToolUse
@@ -737,7 +815,9 @@ lo lancio in plan mode
 
 ![Apri link pubblico disabilitato](/notes-imgs/apri-link-pubblico-disabilitato.png)
 
-[Commit: funzionalita link pubblico e aggiunta hook Post Tool Use]()
+[Commit: funzionalita link pubblico e aggiunta hook Post Tool Use](https://github.com/simotae14/claude-code-practical-guide/commit/593545dd4ad4cca453fb0af81aab6f04c151127f)
+
+## Installing & Using Plugins
 
 ## Creating Custom Plugins:
 

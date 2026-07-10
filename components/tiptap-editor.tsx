@@ -3,6 +3,18 @@
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import type { JSONContent } from '@tiptap/react';
+import {
+  Bold as IconBold,
+  Italic as IconItalic,
+  Heading1 as IconH1,
+  Heading2 as IconH2,
+  Heading3 as IconH3,
+  Pilcrow as IconParagraph,
+  Code as IconCode,
+  SquareCode as IconCodeBlock,
+  List as IconBulletList,
+  Minus as IconHorizontalRule,
+} from 'lucide-react';
 
 interface TiptapEditorProps {
   onChange: (json: JSONContent) => void;
@@ -12,114 +24,7 @@ interface TiptapEditorProps {
 const BTN =
   'flex h-8 w-8 items-center justify-center rounded transition-colors hover:bg-foreground/10 disabled:opacity-40 aria-pressed:bg-foreground aria-pressed:text-background';
 
-// ── SVG icons ────────────────────────────────────────────────────────────────
-
-function IconBold() {
-  return (
-    <svg width='15' height='15' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M6 4h8a4 4 0 0 1 0 8H6V4zm0 8h9a4 4 0 0 1 0 8H6v-8z' />
-    </svg>
-  );
-}
-
-function IconItalic() {
-  return (
-    <svg width='15' height='15' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M11.49 3h5l-.32 2H14.3L11.7 19h1.87l-.32 2H7.49l.32-2H9.7l2.6-14H10.5l.99-2z' />
-    </svg>
-  );
-}
-
-function IconH1() {
-  return (
-    <svg width='16' height='16' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M3 4h2v7h4V4h2v16H9v-7H5v7H3V4zm12 12v-8.5l-2 1.5V7l2-1.5h2V16h-2z' />
-    </svg>
-  );
-}
-
-function IconH2() {
-  return (
-    <svg width='16' height='16' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M3 4h2v7h4V4h2v16H9v-7H5v7H3V4zm10 8.5a3 3 0 0 1 6 0c0 1-.6 1.9-1.4 2.7L15.5 18H19v2h-6v-1.5l3.5-3.5c.5-.5.8-1 .8-1.5a1 1 0 0 0-2 0h-2z' />
-    </svg>
-  );
-}
-
-function IconH3() {
-  return (
-    <svg width='16' height='16' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M3 4h2v7h4V4h2v16H9v-7H5v7H3V4zm10.5 4.5H17a1 1 0 1 1 0 2h-2v1h2a1 1 0 1 1 0 2h-3.5v2H17a3 3 0 0 0 0-6h-3.5V8.5z' />
-    </svg>
-  );
-}
-
-function IconParagraph() {
-  return (
-    <svg width='15' height='15' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <path d='M9 16h2v4h2V6h2v14h2V6h1V4H9a5 5 0 0 0 0 10z' />
-    </svg>
-  );
-}
-
-function IconCode() {
-  return (
-    <svg
-      width='15'
-      height='15'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      aria-hidden
-    >
-      <polyline points='16 18 22 12 16 6' />
-      <polyline points='8 6 2 12 8 18' />
-    </svg>
-  );
-}
-
-function IconCodeBlock() {
-  return (
-    <svg
-      width='15'
-      height='15'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      aria-hidden
-    >
-      <rect x='2' y='3' width='20' height='18' rx='2' />
-      <path d='M8 10l-3 2 3 2M16 10l3 2-3 2M12 8l-2 8' />
-    </svg>
-  );
-}
-
-function IconBulletList() {
-  return (
-    <svg width='15' height='15' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <circle cx='4' cy='7' r='1.5' />
-      <circle cx='4' cy='12' r='1.5' />
-      <circle cx='4' cy='17' r='1.5' />
-      <rect x='8' y='6' width='12' height='2' rx='1' />
-      <rect x='8' y='11' width='12' height='2' rx='1' />
-      <rect x='8' y='16' width='12' height='2' rx='1' />
-    </svg>
-  );
-}
-
-function IconHorizontalRule() {
-  return (
-    <svg width='15' height='15' viewBox='0 0 24 24' fill='currentColor' aria-hidden>
-      <rect x='2' y='11' width='20' height='2' rx='1' />
-    </svg>
-  );
-}
+const ICON = 'size-[15px]';
 
 // ── Toolbar ───────────────────────────────────────────────────────────────────
 
@@ -155,7 +60,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={BTN}
         >
-          <IconBold />
+          <IconBold className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -165,7 +70,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={BTN}
         >
-          <IconItalic />
+          <IconItalic className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -175,7 +80,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleCode().run()}
           className={BTN}
         >
-          <IconCode />
+          <IconCode className={ICON} aria-hidden />
         </button>
 
         <Divider />
@@ -189,7 +94,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={BTN}
         >
-          <IconParagraph />
+          <IconParagraph className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -199,7 +104,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={BTN}
         >
-          <IconH1 />
+          <IconH1 className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -209,7 +114,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={BTN}
         >
-          <IconH2 />
+          <IconH2 className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -219,7 +124,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={BTN}
         >
-          <IconH3 />
+          <IconH3 className={ICON} aria-hidden />
         </button>
 
         <Divider />
@@ -233,7 +138,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={BTN}
         >
-          <IconBulletList />
+          <IconBulletList className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -243,7 +148,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={BTN}
         >
-          <IconCodeBlock />
+          <IconCodeBlock className={ICON} aria-hidden />
         </button>
         <button
           type='button'
@@ -252,7 +157,7 @@ export function TiptapEditor({ onChange, initialContent }: TiptapEditorProps) {
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
           className={BTN}
         >
-          <IconHorizontalRule />
+          <IconHorizontalRule className={ICON} aria-hidden />
         </button>
       </div>
 
